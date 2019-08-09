@@ -1,0 +1,41 @@
+{
+	"name": "damejidlo/phpstan-nette-tester",
+	"type": "phpstan-extension",
+	"description": "PHPStan nette/tester extension",
+	"keywords": ["phpstan", "nette", "tester"],
+	"license": "MIT",
+	"require": {
+		"php": ">=7.2",
+		"nikic/php-parser": "^4.0",
+		"phpstan/phpstan": "^0.11.6"
+	},
+	"require-dev": {
+		"damejidlo/coding-standard": "^1.1.0",
+		"jakub-onderka/php-parallel-lint": "^1.0",
+		"nette/tester": "^2.3.0",
+		"nette/finder": "^2.4",
+		"phpunit/phpunit": "^7.1.3",
+		"phpstan/phpstan-phpunit": "^0.11",
+		"phpstan/phpstan-strict-rules": "^0.11.1"
+	},
+	"autoload": {
+		"psr-4": {
+			"Damejidlo\\PHPStan\\": "src/"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"DamejidloTests\\": "tests/"
+		}
+	},
+	"extra": {
+		"branch-alias": {
+			"dev-master": "0.1-dev"
+		},
+		"phpstan": {
+			"includes": [
+				"extension.neon"
+			]
+		}
+	}
+}

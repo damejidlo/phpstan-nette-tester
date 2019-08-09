@@ -1,0 +1,37 @@
+language: php
+
+php:
+  - 7.2
+  - 7.3
+
+env:
+  - COMPOSER_ARGS=""
+  - COMPOSER_ARGS="--prefer-lowest"
+
+jobs:
+  include:
+    -   stage: Code Standard Checker
+        php: 7.2
+        install:
+          - travis_retry composer update --no-interaction --optimize-autoloader --prefer-dist
+        script:
+          - vendor/bin/phpcs
+
+install:
+  - travis_retry composer update --no-interaction --optimize-autoloader --prefer-dist $COMPOSER_ARGS
+
+script:
+  - vendor/bin/parallel-lint -e php --exclude vendor .
+  - vendor/bin/phpunit -c tests/phpunit.xml tests
+  - vendor/bin/phpstan analyse
+  - vendor/bin/phpstan analyse -c phpstan.tests.neon.dist
+
+after_failure:
+  - for i in $(find tests -name \*.actual); do echo "--- $i"; cat $i; echo; echo; done
+  - for i in $(find tests -name \*.expected); do echo "--- $i"; cat $i; echo; echo; done
+
+sudo: false
+
+cache:
+  directories:
+    - $HOME/.composer/cache
