@@ -1,0 +1,11 @@
+parameters:
+	earlyTerminatingMethodCalls:
+		Tester\Assert:
+			- fail
+
+
+services:
+	-
+		type: Damejidlo\PHPStan\Type\NetteTester\AssertTypeSpecifyingExtension
+		tags:
+			- phpstan.typeSpecifier.staticMethodTypeSpecifyingExtension
