@@ -3,7 +3,6 @@ declare(strict_types = 1);
 
 namespace Damejidlo\PHPStan\Type\NetteTester;
 
-use Nette\StaticClass;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Expr\BinaryOp\BooleanAnd;
@@ -22,8 +21,6 @@ use PHPStan\Type\Constant\ConstantStringType;
 
 final class AssertMethodExpressionResolversProvider
 {
-
-	use StaticClass;
 
 	/**
 	 * @var \Closure[]\NULL
