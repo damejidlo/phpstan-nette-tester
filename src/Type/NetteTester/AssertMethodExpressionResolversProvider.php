@@ -44,43 +44,43 @@ final class AssertMethodExpressionResolversProvider
 	{
 		if (self::$resolvers === NULL) {
 			self::$resolvers = [
-				'null' => function (Scope $scope, Arg $expr) : ?Expr {
+				'null' => function (Scope $scope, Arg $expr) : Expr {
 					return new Identical(
 						$expr->value,
 						new ConstFetch(new Name('null'))
 					);
 				},
-				'notNull' => function (Scope $scope, Arg $expr) : ?Expr {
+				'notNull' => function (Scope $scope, Arg $expr) : Expr {
 					return new NotIdentical(
 						$expr->value,
 						new ConstFetch(new Name('null'))
 					);
 				},
-				'true' => function (Scope $scope, Arg $expr) : ?Expr {
+				'true' => function (Scope $scope, Arg $expr) : Expr {
 					return new Identical(
 						$expr->value,
 						new ConstFetch(new Name('true'))
 					);
 				},
-				'false' => function (Scope $scope, Arg $expr) : ?Expr {
+				'false' => function (Scope $scope, Arg $expr) : Expr {
 					return new Identical(
 						$expr->value,
 						new ConstFetch(new Name('false'))
 					);
 				},
-				'truthy' => function (Scope $scope, Arg $expr) : ?Expr {
+				'truthy' => function (Scope $scope, Arg $expr) : Expr {
 					return new Equal(
 						$expr->value,
 						new ConstFetch(new Name('true'))
 					);
 				},
-				'falsey' => function (Scope $scope, Arg $expr) : ?Expr {
+				'falsey' => function (Scope $scope, Arg $expr) : Expr {
 					return new Equal(
 						$expr->value,
 						new ConstFetch(new Name('false'))
 					);
 				},
-				'nan' => function (Scope $scope, Arg $value) : ?Expr {
+				'nan' => function (Scope $scope, Arg $value) : Expr {
 					return new BooleanAnd(
 						new FuncCall(
 							new Name('is_float'),
@@ -92,13 +92,13 @@ final class AssertMethodExpressionResolversProvider
 						)
 					);
 				},
-				'same' => function (Scope $scope, Arg $value1, Arg $value2) : ?Expr {
+				'same' => function (Scope $scope, Arg $value1, Arg $value2) : Expr {
 					return new Identical(
 						$value1->value,
 						$value2->value
 					);
 				},
-				'notSame' => function (Scope $scope, Arg $value1, Arg $value2) : ?Expr {
+				'notSame' => function (Scope $scope, Arg $value1, Arg $value2) : Expr {
 					return new NotIdentical(
 						$value1->value,
 						$value2->value
@@ -121,7 +121,7 @@ final class AssertMethodExpressionResolversProvider
 						new Name($typeValue)
 					);
 				},
-				'count' => function (Scope $scope, Arg $count, Arg $value) : ?Expr {
+				'count' => function (Scope $scope, Arg $count, Arg $value) : Expr {
 					return new BooleanAnd(
 						new BooleanOr(
 							new FuncCall(
@@ -157,73 +157,73 @@ final class AssertMethodExpressionResolversProvider
 	{
 		if (self::$typeResolvers === NULL) {
 			self::$typeResolvers = [
-				'list' => function (Scope $scope, Arg $value) : ?Expr {
+				'list' => function (Scope $scope, Arg $value) : Expr {
 					return new FuncCall(
 						new Name('is_array'),
 						[$value]
 					);
 				},
-				'array' => function (Scope $scope, Arg $value) : ?Expr {
+				'array' => function (Scope $scope, Arg $value) : Expr {
 					return new FuncCall(
 						new Name('is_array'),
 						[$value]
 					);
 				},
-				'bool' => function (Scope $scope, Arg $value) : ?Expr {
+				'bool' => function (Scope $scope, Arg $value) : Expr {
 					return new FuncCall(
 						new Name('is_bool'),
 						[$value]
 					);
 				},
-				'callable' => function (Scope $scope, Arg $value) : ?Expr {
+				'callable' => function (Scope $scope, Arg $value) : Expr {
 					return new FuncCall(
 						new Name('is_callable'),
 						[$value]
 					);
 				},
-				'float' => function (Scope $scope, Arg $value) : ?Expr {
+				'float' => function (Scope $scope, Arg $value) : Expr {
 					return new FuncCall(
 						new Name('is_float'),
 						[$value]
 					);
 				},
-				'int' => function (Scope $scope, Arg $value) : ?Expr {
+				'int' => function (Scope $scope, Arg $value) : Expr {
 					return new FuncCall(
 						new Name('is_int'),
 						[$value]
 					);
 				},
-				'integer' => function (Scope $scope, Arg $value) : ?Expr {
+				'integer' => function (Scope $scope, Arg $value) : Expr {
 					return new FuncCall(
 						new Name('is_int'),
 						[$value]
 					);
 				},
-				'null' => function (Scope $scope, Arg $value) : ?Expr {
+				'null' => function (Scope $scope, Arg $value) : Expr {
 					return new FuncCall(
 						new Name('is_null'),
 						[$value]
 					);
 				},
-				'object' => function (Scope $scope, Arg $value) : ?Expr {
+				'object' => function (Scope $scope, Arg $value) : Expr {
 					return new FuncCall(
 						new Name('is_object'),
 						[$value]
 					);
 				},
-				'resource' => function (Scope $scope, Arg $value) : ?Expr {
+				'resource' => function (Scope $scope, Arg $value) : Expr {
 					return new FuncCall(
 						new Name('is_resource'),
 						[$value]
 					);
 				},
-				'scalar' => function (Scope $scope, Arg $value) : ?Expr {
+				'scalar' => function (Scope $scope, Arg $value) : Expr {
 					return new FuncCall(
 						new Name('is_scalar'),
 						[$value]
 					);
 				},
-				'string' => function (Scope $scope, Arg $value) : ?Expr {
+				'string' => function (Scope $scope, Arg $value) : Expr {
 					return new FuncCall(
 						new Name('is_string'),
 						[$value]
