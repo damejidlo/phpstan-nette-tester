@@ -11,6 +11,9 @@ use PHPStan\Type\StaticMethodTypeSpecifyingExtension;
 
 
 
+/**
+ * @extends RuleTestCase<VariableTypeReportingRule>
+ */
 class AssertTypeSpecifyingExtensionTest extends RuleTestCase
 {
 

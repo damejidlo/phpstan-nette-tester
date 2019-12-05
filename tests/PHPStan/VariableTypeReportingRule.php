@@ -7,10 +7,14 @@ use PhpParser\Node;
 use PhpParser\Node\Expr\Variable;
 use PHPStan\Analyser\Scope;
 use PHPStan\Rules\Rule;
+use PHPStan\Rules\RuleError;
 use PHPStan\Type\VerbosityLevel;
 
 
 
+/**
+ * @implements Rule<Variable>
+ */
 class VariableTypeReportingRule implements Rule
 {
 
@@ -22,16 +26,12 @@ class VariableTypeReportingRule implements Rule
 
 
 	/**
-	 * @param Node|Variable $node
+	 * @param Node&Variable $node
 	 * @param Scope $scope
-	 * @return string[] errors
+	 * @return array<string|RuleError>
 	 */
 	public function processNode(Node $node, Scope $scope) : array
 	{
-		if (! $node instanceof Variable) {
-			return [];
-		}
-
 		if (! is_string($node->name)) {
 			return [];
 		}
