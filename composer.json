@@ -12,8 +12,8 @@
 	"require-dev": {
 		"damejidlo/coding-standard": "^1.1.0",
 		"jakub-onderka/php-parallel-lint": "^1.0",
-		"nette/tester": "^2.3.0",
-		"phpunit/phpunit": "^7.1.3",
+		"nette/tester": "^2.3.1",
+		"phpunit/phpunit": "^7.5.17",
 		"phpstan/phpstan-phpunit": "^0.12",
 		"phpstan/phpstan-strict-rules": "^0.12"
 	},
