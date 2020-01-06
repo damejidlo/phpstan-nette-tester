@@ -10,7 +10,7 @@
 		"phpstan/phpstan": "^0.12.0"
 	},
 	"require-dev": {
-		"damejidlo/coding-standard": "^1.1.0",
+		"damejidlo/coding-standard": "^2.0.0",
 		"jakub-onderka/php-parallel-lint": "^1.0",
 		"nette/tester": "^2.3.1",
 		"phpunit/phpunit": "^7.5.18",
